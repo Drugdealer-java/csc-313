@@ -1,1 +1,66 @@
 
+using single loop
+   
+    import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for rows and columns
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+
+        // Print the pattern
+        printPattern(rows, columns);
+    }
+
+    public static void printPattern(int rows, int columns) {
+        for (int i = 0; i < rows; i++) {
+            StringBuilder row = new StringBuilder();
+
+            for (int j = 0; j < columns; j++) {
+                if (i < 3 && j < 3) {
+                    row.append("*"); // Top three rows, first three stars
+                } else {
+                    row.append("="); // All equals in other parts
+                }
+            }
+            System.out.println(row); // Print the constructed row
+        }
+    }
+}
+
+  using nested loop
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for rows and columns
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+
+        // Print the pattern
+        printPattern(rows, columns);
+    }
+
+    public static void printPattern(int rows, int columns) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (i < 3 && j < 3) {
+                    System.out.print("*"); // Top three rows, first three stars
+                } else {
+                    System.out.print("="); // All equals in other parts
+                }
+            }
+            System.out.println(); // Move to the next row
+        }
+    }
+}
