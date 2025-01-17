@@ -1,0 +1,45 @@
+
+import java.util.Scanner;
+
+public class ArrayExample {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the size of the array
+        System.out.print("Enter the number of elements in the array: ");
+        int size = scanner.nextInt();
+
+        // Handle case for non-positive array size
+        if (size <= 0) {
+            System.out.println("Array size must be greater than zero.");
+            scanner.close(); // Close the scanner before exiting
+            return; // Exit the program
+        }
+
+        // Declare an array of the specified length
+        int[] numbers = new int[size];
+
+        // Part (a): Populate the array with user input
+        System.out.println("Please enter " + size + " numbers:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print("Enter value for index " + i + ": ");
+            // Validate user input
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next(); // Clear the invalid input
+                System.out.print("Enter value for index " + i + ": ");
+            }
+            numbers[i] = scanner.nextInt(); // Store the valid integer in the array
+        }
+
+        // Part (b): Print the elements of the array using a for-each loop
+        System.out.println("\nThe values you entered are:");
+        for (int number : numbers) {
+            System.out.println(number); // Print each number in the array
+        }
+
+        // Close the scanner
+        scanner.close(); // Close the scanner to free resources
+    }
+}
