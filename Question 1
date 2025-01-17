@@ -1,1 +1,56 @@
 
+import java.util.Scanner;
+
+public class FlagPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the character for the green section:");
+        String greenChar = scanner.nextLine();
+        
+        System.out.println("Enter the character for the white section:");
+        String whiteChar = scanner.nextLine();
+        
+        System.out.println("Using Nested Loop:");
+        printFlagWithNestedLoop(6, 15, greenChar, whiteChar);
+        
+        System.out.println("\nUsing Single Loop:");
+        printFlagWithSingleLoop(6, 15, greenChar, whiteChar);
+    }
+
+    // Method using nested loops
+    public static void printFlagWithNestedLoop(int rows, int columns, String greenChar, String whiteChar) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (j < 5) {
+                    System.out.print(greenChar); // Green section
+                } else if (j < 10) {
+                    System.out.print(whiteChar); // White section
+                } else {
+                    System.out.print(greenChar); // Green section
+                }
+            }
+            System.out.println(); // Move to the next row
+        }
+    }
+
+    // Method using a single loop
+    public static void printFlagWithSingleLoop(int rows, int columns, String greenChar, String whiteChar) {
+        StringBuilder rowPattern = new StringBuilder();
+
+        // Build the row pattern once
+        for (int j = 0; j < columns; j++) {
+            if (j < 5) {
+                rowPattern.append(greenChar); // Green section
+            } else if (j < 10) {
+                rowPattern.append(whiteChar); // White section
+            } else {
+                rowPattern.append(greenChar); // Green section
+            }
+        }
+
+        // Print the row pattern for the specified number of rows
+        for (int i = 0; i < rows; i++) {
+            System.out.println(rowPattern.toString());
+        }
+    }
