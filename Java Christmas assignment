@@ -1,0 +1,297 @@
+Question 1
+
+import java.util.Scanner;
+
+public class FlagPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Enter the character for the green section:");
+        String greenChar = scanner.nextLine();
+        
+        System.out.println("Enter the character for the white section:");
+        String whiteChar = scanner.nextLine();
+        
+        System.out.println("Using Nested Loop:");
+        printFlagWithNestedLoop(6, 15, greenChar, whiteChar);
+        
+        System.out.println("\nUsing Single Loop:");
+        printFlagWithSingleLoop(6, 15, greenChar, whiteChar);
+    }
+
+    // Method using nested loops
+    public static void printFlagWithNestedLoop(int rows, int columns, String greenChar, String whiteChar) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (j < 5) {
+                    System.out.print(greenChar); // Green section
+                } else if (j < 10) {
+                    System.out.print(whiteChar); // White section
+                } else {
+                    System.out.print(greenChar); // Green section
+                }
+            }
+            System.out.println(); // Move to the next row
+        }
+    }
+
+    // Method using a single loop
+    public static void printFlagWithSingleLoop(int rows, int columns, String greenChar, String whiteChar) {
+        StringBuilder rowPattern = new StringBuilder();
+
+        // Build the row pattern once
+        for (int j = 0; j < columns; j++) {
+            if (j < 5) {
+                rowPattern.append(greenChar); // Green section
+            } else if (j < 10) {
+                rowPattern.append(whiteChar); // White section
+            } else {
+                rowPattern.append(greenChar); // Green section
+            }
+        }
+
+        // Print the row pattern for the specified number of rows
+        for (int i = 0; i < rows; i++) {
+            System.out.println(rowPattern.toString());
+        }
+    }
+
+Question 2
+using single loop
+   
+    import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for rows and columns
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+
+        // Print the pattern
+        printPattern(rows, columns);
+    }
+
+    public static void printPattern(int rows, int columns) {
+        for (int i = 0; i < rows; i++) {
+            StringBuilder row = new StringBuilder();
+
+            for (int j = 0; j < columns; j++) {
+                if (i < 3 && j < 3) {
+                    row.append("*"); // Top three rows, first three stars
+                } else {
+                    row.append("="); // All equals in other parts
+                }
+            }
+            System.out.println(row); // Print the constructed row
+        }
+    }
+}
+
+  using nested loop
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get user input for rows and columns
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+
+        // Print the pattern
+        printPattern(rows, columns);
+    }
+
+    public static void printPattern(int rows, int columns) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (i < 3 && j < 3) {
+                    System.out.print("*"); // Top three rows, first three stars
+                } else {
+                    System.out.print("="); // All equals in other parts
+                }
+            }
+            System.out.println(); // Move to the next row
+        }
+    }
+}
+
+Question 3
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class ArrayStatistics {
+    public static void main(String[] args) {
+        // Create a scanner for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the size of the array
+        System.out.print("Enter the number of elements in the array: ");
+        int size = scanner.nextInt();
+
+        // Handle case for empty array
+        if (size <= 0) {
+            System.out.println("Array size must be greater than zero.");
+            return; // Exit the program
+        }
+
+        // Initialize the array
+        int[] array = new int[size];
+
+        // Prompt user to enter the array elements
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < size; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        // Calculate mean
+        double mean = calculateMean(array);
+        System.out.println("Mean: " + mean);
+
+        // Calculate median
+        double median = calculateMedian(array);
+        System.out.println("Median: " + median);
+
+        // Calculate standard deviation
+        double stdDev = calculateStandardDeviation(array, mean);
+        System.out.println("Standard Deviation: " + stdDev);
+    }
+
+    // Method to calculate mean
+    public static double calculateMean(int[] array) {
+        int sum = 0; // Initialize sum to 0
+        for (int num : array) {
+            sum += num; // Add each number to the sum
+        }
+        return (double) sum / array.length; // Return the mean
+    }
+
+    // Method to calculate median
+    public static double calculateMedian(int[] array) {
+        Arrays.sort(array); // Sort the array to find the median
+        int n = array.length; // Get the number of elements in the array
+        if (n % 2 == 0) {
+            // If even, return the average of the two middle numbers
+            return (array[n / 2 - 1] + array[n / 2]) / 2.0;
+        } else {
+            // If odd, return the middle number
+            return array[n / 2];
+        }
+    }
+
+    // Method to calculate standard deviation
+    public static double calculateStandardDeviation(int[] array, double mean) {
+        double sumSquaredDifferences = 0; // Initialize sum of squared differences to 0
+        for (int num : array) {
+            sumSquaredDifferences += Math.pow(num - mean, 2); // Add squared difference from the mean
+        }
+        return Math.sqrt(sumSquaredDifferences / array.length); // Return the standard deviation
+    }
+}
+
+Question 4
+
+import java.util.Scanner;
+
+public class ArrayExample {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the size of the array
+        System.out.print("Enter the number of elements in the array: ");
+        int size = scanner.nextInt();
+
+        // Handle case for non-positive array size
+        if (size <= 0) {
+            System.out.println("Array size must be greater than zero.");
+            scanner.close(); // Close the scanner before exiting
+            return; // Exit the program
+        }
+
+        // Declare an array of the specified length
+        int[] numbers = new int[size];
+
+        // Part (a): Populate the array with user input
+        System.out.println("Please enter " + size + " numbers:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print("Enter value for index " + i + ": ");
+            // Validate user input
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter an integer.");
+                scanner.next(); // Clear the invalid input
+                System.out.print("Enter value for index " + i + ": ");
+            }
+            numbers[i] = scanner.nextInt(); // Store the valid integer in the array
+        }
+
+        // Part (b): Print the elements of the array using a for-each loop
+        System.out.println("\nThe values you entered are:");
+        for (int number : numbers) {
+            System.out.println(number); // Print each number in the array
+        }
+
+        // Close the scanner
+        scanner.close(); // Close the scanner to free resources
+    }
+}
+
+Question 5
+
+import java.util.Scanner;
+
+public class TwoDArrayExample {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the size of the 2D array
+        System.out.print("Enter the size of the array (n x n): ");
+        int size = scanner.nextInt();
+
+        // Handle case for non-positive array size
+        if (size <= 0) {
+            System.out.println("Array size must be greater than zero.");
+            scanner.close(); // Close the scanner before exiting
+            return; // Exit the program
+        }
+
+        // Declare a 2D array of the specified size
+        int[][] array = new int[size][size];
+
+        // Part (a): Assign elements to the array with user input
+        System.out.println("Enter elements for a " + size + "x" + size + " array:");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print("Enter element for index [" + i + "][" + j + "]: ");
+                // Validate user input
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Invalid input. Please enter an integer.");
+                    scanner.next(); // Clear the invalid input
+                    System.out.print("Enter element for index [" + i + "][" + j + "]: ");
+                }
+                array[i][j] = scanner.nextInt(); // Store the valid integer in the array
+            }
+        }
+
+        // Part (b): Print out the array elements using a for-each loop
+        System.out.println("\nElements of the array:");
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " "); // Print each element in the row
+            }
+            System.out.println(); // Move to the next line after printing a row
+        }
+
+        // Close the scanner
+        scanner.close(); // Close the scanner to free resources
+    }
+}
