@@ -1,0 +1,50 @@
+
+import java.util.Scanner;
+
+public class TwoDArrayExample {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for the size of the 2D array
+        System.out.print("Enter the size of the array (n x n): ");
+        int size = scanner.nextInt();
+
+        // Handle case for non-positive array size
+        if (size <= 0) {
+            System.out.println("Array size must be greater than zero.");
+            scanner.close(); // Close the scanner before exiting
+            return; // Exit the program
+        }
+
+        // Declare a 2D array of the specified size
+        int[][] array = new int[size][size];
+
+        // Part (a): Assign elements to the array with user input
+        System.out.println("Enter elements for a " + size + "x" + size + " array:");
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print("Enter element for index [" + i + "][" + j + "]: ");
+                // Validate user input
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Invalid input. Please enter an integer.");
+                    scanner.next(); // Clear the invalid input
+                    System.out.print("Enter element for index [" + i + "][" + j + "]: ");
+                }
+                array[i][j] = scanner.nextInt(); // Store the valid integer in the array
+            }
+        }
+
+        // Part (b): Print out the array elements using a for-each loop
+        System.out.println("\nElements of the array:");
+        for (int[] row : array) {
+            for (int element : row) {
+                System.out.print(element + " "); // Print each element in the row
+            }
+            System.out.println(); // Move to the next line after printing a row
+        }
+
+        // Close the scanner
+        scanner.close(); // Close the scanner to free resources
+    }
+}
